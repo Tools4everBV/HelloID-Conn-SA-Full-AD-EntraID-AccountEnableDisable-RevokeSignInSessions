@@ -7,7 +7,7 @@ $portalUrl = "https://CUSTOMER.helloid.com"
 $apiKey = "API_KEY"
 $apiSecret = "API_SECRET"
 $delegatedFormAccessGroupNames = @("") #Only unique names are supported. Groups must exist!
-$delegatedFormCategories = @("Accounts") #Only unique names are supported. Categories will be created if not exists
+$delegatedFormCategories = @("Active Directory") #Only unique names are supported. Categories will be created if not exists
 $script:debugLogging = $false #Default value: $false. If $true, the HelloID resource GUIDs will be shown in the logging
 $script:duplicateForm = $false #Default value: $false. If $true, the HelloID resource names will be changed to import a duplicate Form
 $script:duplicateFormSuffix = "_tmp" #the suffix will be added to all HelloID resource names to generate a duplicate form with different resource names
@@ -21,7 +21,7 @@ $tmpName = @'
 EntraAppId
 '@ 
 $tmpValue = @'
-371f6f87-2a60-484c-a2f2-7c1f27e88615
+<appid>
 '@ 
 $globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
 
@@ -30,7 +30,7 @@ $tmpName = @'
 EntraTenantId
 '@ 
 $tmpValue = @'
-efab97f6-098b-462e-9c7c-7d2b6e90ac7f
+<tenantid>
 '@ 
 $globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
 
@@ -46,7 +46,7 @@ $tmpName = @'
 EntraBase64
 '@ 
 $tmpValue = @'
-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
+<BASE64_ENCODED_CERTIFICATE>
 '@ 
 $globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
 
@@ -55,7 +55,7 @@ $tmpName = @'
 ADusersSearchOU
 '@ 
 $tmpValue = @'
-[     {         "OU": "OU=Nog niet in dienst,OU=Accounts,OU=Stichting Groenhuysen,DC=stgh,DC=lan"     },     {         "OU": "OU=User Accounts,OU=Accounts,OU=Stichting Groenhuysen,DC=stgh,DC=lan"     } ]
+[     {         "OU": "OU=klant,DC=test,DC=local"     },     {         "OU": "OU=User Accounts,OU=klant,DC=test,DC=local"     } ]
 '@ 
 $globalHelloIDVariables.Add([PSCustomObject]@{name = $tmpName; value = $tmpValue; secret = "False"});
 
