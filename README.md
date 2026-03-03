@@ -1,3 +1,21 @@
+⚠️ **DEPRECATED** - This repository has been deprecated.
+
+The functionality in this repository has been split into two separate repositories for better maintainability and access control:
+
+- **Account Enable**: [HelloID-Conn-SA-Full-Microsoft-AD-EntraID-AccountEnable](https://github.com/Tools4everBV/HelloID-Conn-SA-Full-Microsoft-AD-EntraID-AccountEnable) https://github.com/Tools4everBV/HelloID-Conn-SA-Full-Microsoft-AD-EntraID-AccountEnable
+- **Account Disable**: [HelloID-Conn-SA-Full-Microsoft-AD-EntraID-AccountDisable](https://github.com/Tools4everBV/HelloID-Conn-SA-Full-Microsoft-AD-EntraID-AccountDisable)
+
+## Benefits of the Split
+
+- **Granular Access Control**: Assign different permissions to different roles based on your organizational needs (e.g., enable permissions to system admins, disable permissions to the service desk)
+- **Improved Performance**: Each form only queries the relevant subset of users:
+  - Enable form queries only disabled users
+  - Disable form queries only enabled users
+  - Eliminates unnecessary user state queries and filtering
+- **Better Separation of Concerns**: Each repository has a single, focused responsibility
+
+Please migrate to the appropriate repository above based on your needs.
+
 <!-- Description -->
 ## Description
 This HelloID Service Automation Delegated Form provides AD and EntraID account enable / disable functionality. The following options are available:
